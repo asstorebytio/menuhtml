@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Menu</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    @font-face {
+      font-family: McdStyle;
+      src: url(imgsrc/Speedee-Bold.ttf);
+    }
+
+    body {
+      font-family: McdStyle;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      user-select: none;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 40px;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .menu-section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .menu-section h2 {
+      text-align: center;
+      font-size: 56px;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #8a2b06;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 20px;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item-img {
+      flex-basis: 30%;
+    }
+
+    .menu-item-img img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .menu-item-details {
+      flex-basis: 65%;
+      padding-left: 20px;
+    }
+
+    .menu-item-details h3 {
+      font-size: 34px;
+      margin: 0;
+      color: #333;
+    }
+
+    .menu-item-details p {
+      margin: 10px 0;
+      color: #777;
+    }
+
+    .menu-item-details .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #8a2b06;
+    }
+
+    .menu-item-details .quantity-controls {
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-item-details button {
+      background-color: #8a2b06;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-left: 10px;
+      margin-top: 10px;
+      font-family: McdStyle;
+    }
+
+    .menu-item-details button:hover {
+      background-color: #722506;
+    }
+
+    .quantity-controls button {
+      background-color: #8a2b06;
+      color: white;
+      border: none;
+      font-size: 18px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 0 5px;
+      line-height: 0.8;
+    }
+
+    .quantity-controls input[type="number"] {
+      width: 50px;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    #video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <!-- Video Background -->
+  <video id="video-background" autoplay muted loop>
+    <source src="imgsrc/3115386-uhd_3840_2160_25fps.mp4" type="video/mp4">
+  </video>
+
+  <div class="menu-section" style="opacity: 90%;">
+    <h2>Our Menu</h2>
+
+    <!-- Menu Item 1 -->
+    <div class="menu-item">
+      <div class="menu-item-img">
+        <img src="https://bkdelivery.co.id/static/website/img/whopper-new.95b2e99ea56e.png" alt="menu1">
+      </div>
+      <div class="menu-item-details">
+        <h3>Menu 1</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum ex quis mauris sodales, in suscipit ante eleifend.</p>
+        <div class="price" id="price-menu1">Rp 50.000</div>
+        <div class="quantity-controls">
+          <button onclick="changeQuantity('quantity-menu1', -1)">-</button>
+          <input type="number" id="quantity-menu1" name="quantity" min="1" value="1">
+          <button onclick="changeQuantity('quantity-menu1', 1)">+</button>
+        </div>
+        <button onclick="addToCart('Menu 1', document.getElementById('quantity-menu1').value, 50000)">Order Now</button>
+      </div>
+    </div>
+
+    <!-- Menu Item 2 -->
+    <div class="menu-item">
+      <div class="menu-item-img">
+        <img src="https://bkdelivery.co.id/static/website/img/whopper-new.95b2e99ea56e.png" alt="menu2">
+      </div>
+      <div class="menu-item-details">
+        <h3>Menu 2</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum ex quis mauris sodales, in suscipit ante eleifend.</p>
+        <div class="price" id="price-menu2">Rp 60.000</div>
+        <div class="quantity-controls">
+          <button onclick="changeQuantity('quantity-menu2', -1)">-</button>
+          <input type="number" id="quantity-menu2" name="quantity" min="1" value="1">
+          <button onclick="changeQuantity('quantity-menu2', 1)">+</button>
+        </div>
+        <button onclick="addToCart('Menu 2', document.getElementById('quantity-menu2').value, 60000)">Order Now</button>
+      </div>
+    </div>
+
+    <!-- Menu Item 3 -->
+    <div class="menu-item">
+      <div class="menu-item-img">
+        <img src="https://bkdelivery.co.id/static/website/img/whopper-new.95b2e99ea56e.png" alt="menu3">
+      </div>
+      <div class="menu-item-details">
+        <h3>Menu 3</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum ex quis mauris sodales, in suscipit ante eleifend.</p>
+        <div class="price" id="price-menu3">Rp 70.000</div>
+        <div class="quantity-controls">
+          <button onclick="changeQuantity('quantity-menu3', -1)">-</button>
+          <input type="number" id="quantity-menu3" name="quantity" min="1" value="1">
+          <button onclick="changeQuantity('quantity-menu3', 1)">+</button>
+        </div>
+        <button onclick="addToCart('Menu 3', document.getElementById('quantity-menu3').value, 70000)">Order Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript to handle quantity and add to cart -->
+  <script>
+    function changeQuantity(id, amount) {
+      var quantityInput = document.getElementById(id);
+      var currentValue = parseInt(quantityInput.value);
+      var newValue = currentValue + amount;
+      if (newValue < 1) newValue = 1;
+      quantityInput.value = newValue;
+    }
+
+    function addToCart(menuItem, quantity, price) {
+        var total = quantity * price;
+        var formattedTotal = total.toLocaleString('id-ID');
+        Swal.fire({
+        title: menuItem,
+        html: `
+          <div style="margin-bottom: 10px;font-size: 26px;">Quantity: ${quantity}</div>
+          <div style="margin-top: 10px;font-size: 26px;">Total Price: Rp ${formattedTotal}</div>
+        `,
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+    }
+
+  </script>
+
+</body>
+</html>
