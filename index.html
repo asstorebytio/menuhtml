@@ -18,35 +18,34 @@
       padding: 0;
       background-color: #f8f8f8;
       color: #333;
-      overflow-x: hidden; /* Disable horizontal scrolling */
     }
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      user-select: none;
+    /* Video background */
+    #video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.9;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 40px;
-      text-transform: uppercase;
-      user-select: none;
-    }
-
+    /* Menu Section */
     .menu-section {
       max-width: 1200px;
       margin: 50px auto;
       padding: 20px;
-      background-color: #fff;
+      background-color: rgba(255, 255, 255, 0.8); /* Transparent background using rgba */
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       position: relative;
       z-index: 1;
+      opacity: 0.9; /* Overall transparency */
     }
 
+    /* Menu title */
     .menu-section h2 {
       text-align: center;
       font-size: 56px;
@@ -56,6 +55,7 @@
       color: #8a2b06;
     }
 
+    /* Menu item styling */
     .menu-item {
       display: flex;
       justify-content: space-between;
@@ -63,10 +63,6 @@
       margin-bottom: 30px;
       border-bottom: 1px solid #e0e0e0;
       padding-bottom: 20px;
-    }
-
-    .menu-item:last-child {
-      border-bottom: none;
     }
 
     .menu-item-img {
@@ -122,85 +118,49 @@
       background-color: #722506;
     }
 
-    .quantity-controls button {
-      background-color: #8a2b06;
-      color: white;
-      border: none;
-      font-size: 18px;
-      padding: 5px 10px;
-      cursor: pointer;
-      border-radius: 5px;
-      margin: 0 5px;
-      line-height: 0.8;
-    }
-
-    .quantity-controls input[type="number"] {
-      width: 50px;
-      padding: 5px;
-      font-size: 16px;
-      text-align: center;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    input[type=number]::-webkit-outer-spin-button,
-    input[type=number]::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
-
-    #video-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Important for ensuring the video covers the entire screen */
-      z-index: -1;
-      opacity: 0.9;
-    }
-
-    /* Media query for mobile */
-    @media only screen and (max-width: 600px) {
-      #video-background {
-        height: auto;
-        width: 100%;
-        object-fit: cover; /* Ensure video covers the screen without distorting */
+    /* Responsive adjustments for mobile */
+    @media only screen and (max-width: 768px) {
+      .menu-section {
+        max-width: 90%; /* Make the menu smaller */
+        padding: 10px;  /* Less padding */
+        background-color: rgba(255, 255, 255, 0.7); /* More transparency for smaller screens */
       }
 
-      .menu-section {
-        padding: 10px;
-        margin: 20px auto;
+      .menu-section h2 {
+        font-size: 36px; /* Smaller title */
       }
 
       .menu-item {
-        flex-direction: column;
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start;
       }
 
-      .menu-item-img {
+      .menu-item-img, .menu-item-details {
         flex-basis: 100%;
-        margin-bottom: 20px;
-      }
-
-      .menu-item-details {
-        flex-basis: 100%;
-        padding-left: 0;
+        padding: 0;
       }
 
       .menu-item-details h3 {
-        font-size: 28px;
-      }
-
-      .menu-item-details p {
-        font-size: 14px;
+        font-size: 24px;
       }
 
       .menu-item-details .price {
         font-size: 16px;
+      }
+
+      .menu-item-details button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+
+      .quantity-controls button {
+        font-size: 16px;
+        padding: 5px 10px;
+      }
+
+      .quantity-controls input[type="number"] {
+        width: 40px;
+        padding: 3px;
       }
     }
   </style>
@@ -209,10 +169,9 @@
   <!-- Video Background -->
   <video id="video-background" autoplay muted loop>
     <source src="imgsrc/3115386-uhd_3840_2160_25fps.mp4" type="video/mp4">
-    Your browser does not support the video tag.
   </video>
 
-  <div class="menu-section" style="opacity: 90%;">
+  <div class="menu-section">
     <h2>Our Menu</h2>
 
     <!-- Menu Item 1 -->
@@ -222,7 +181,7 @@
       </div>
       <div class="menu-item-details">
         <h3>Menu 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum ex quis mauris sodales, in suscipit ante eleifend.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         <div class="price" id="price-menu1">Rp 50.000</div>
         <div class="quantity-controls">
           <button onclick="changeQuantity('quantity-menu1', -1)">-</button>
@@ -240,7 +199,7 @@
       </div>
       <div class="menu-item-details">
         <h3>Menu 2</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum ex quis mauris sodales, in suscipit ante eleifend.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         <div class="price" id="price-menu2">Rp 60.000</div>
         <div class="quantity-controls">
           <button onclick="changeQuantity('quantity-menu2', -1)">-</button>
@@ -248,24 +207,6 @@
           <button onclick="changeQuantity('quantity-menu2', 1)">+</button>
         </div>
         <button onclick="addToCart('Menu 2', document.getElementById('quantity-menu2').value, 60000)">Order Now</button>
-      </div>
-    </div>
-
-    <!-- Menu Item 3 -->
-    <div class="menu-item">
-      <div class="menu-item-img">
-        <img src="https://bkdelivery.co.id/static/website/img/whopper-new.95b2e99ea56e.png" alt="menu3">
-      </div>
-      <div class="menu-item-details">
-        <h3>Menu 3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum ex quis mauris sodales, in suscipit ante eleifend.</p>
-        <div class="price" id="price-menu3">Rp 70.000</div>
-        <div class="quantity-controls">
-          <button onclick="changeQuantity('quantity-menu3', -1)">-</button>
-          <input type="number" id="quantity-menu3" name="quantity" min="1" value="1">
-          <button onclick="changeQuantity('quantity-menu3', 1)">+</button>
-        </div>
-        <button onclick="addToCart('Menu 3', document.getElementById('quantity-menu3').value, 70000)">Order Now</button>
       </div>
     </div>
   </div>
@@ -293,7 +234,6 @@
         confirmButtonText: 'OK'
       });
     }
-
   </script>
 
 </body>
