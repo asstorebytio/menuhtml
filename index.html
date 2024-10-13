@@ -99,23 +99,38 @@
     .menu-item-details .quantity-controls {
       display: flex;
       align-items: center;
+      justify-content: flex-start;
     }
 
-    .menu-item-details button {
+    .quantity-controls button {
       background-color: #8a2b06;
-      color: #fff;
-      padding: 10px 20px;
+      color: white;
       border: none;
-      border-radius: 5px;
+      font-size: 18px;
+      padding: 5px 10px;
       cursor: pointer;
-      font-size: 16px;
-      margin-left: 10px;
-      margin-top: 10px;
-      font-family: McdStyle;
+      border-radius: 5px;
+      margin: 0 10px; /* Added margin to create space between button and quantity */
+      line-height: 0.8;
     }
 
-    .menu-item-details button:hover {
-      background-color: #722506;
+    .quantity-controls input[type="number"] {
+      width: 50px;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
     }
 
     /* Responsive adjustments for mobile */
@@ -209,6 +224,25 @@
         <button onclick="addToCart('Menu 2', document.getElementById('quantity-menu2').value, 60000)">Order Now</button>
       </div>
     </div>
+
+    <!-- Menu Item 3 -->
+    <div class="menu-item">
+      <div class="menu-item-img">
+        <img src="https://bkdelivery.co.id/static/website/img/whopper-new.95b2e99ea56e.png" alt="menu3">
+      </div>
+      <div class="menu-item-details">
+        <h3>Menu 3</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div class="price" id="price-menu3">Rp 70.000</div>
+        <div class="quantity-controls">
+          <button onclick="changeQuantity('quantity-menu3', -1)">-</button>
+          <input type="number" id="quantity-menu3" name="quantity" min="1" value="1">
+          <button onclick="changeQuantity('quantity-menu3', 1)">+</button>
+        </div>
+        <button onclick="addToCart('Menu 3', document.getElementById('quantity-menu3').value, 70000)">Order Now</button>
+      </div>
+    </div>
+
   </div>
 
   <!-- JavaScript to handle quantity and add to cart -->
