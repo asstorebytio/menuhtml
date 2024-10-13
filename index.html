@@ -96,24 +96,6 @@
       color: #8a2b06;
     }
 
-    .menu-item-details button {
-      background-color: #8a2b06; /* Warna latar belakang */
-      color: #fff; /* Warna teks */
-      padding: 12px 24px; /* Padding */
-      border: none; /* Tidak ada border */
-      border-radius: 5px; /* Sudut melingkar */
-      cursor: pointer; /* Kursor pointer saat hover */
-      font-size: 18px; /* Ukuran font */
-      transition: background-color 0.3s ease; /* Transisi warna latar belakang saat hover */
-      margin-left: 10px; /* Jarak kiri */
-      margin-top: 10px; /* Jarak atas */
-      font-family: 'McdStyle', sans-serif; /* Font fallback */
-    }
-
-    .menu-item-details button:hover {
-      background-color: #722506; /* Warna saat hover */
-    }
-
     .menu-item-details .quantity-controls {
       display: flex;
       align-items: center;
@@ -128,7 +110,7 @@
       padding: 5px 10px;
       cursor: pointer;
       border-radius: 5px;
-      margin: 0 10px; /* Added margin to create space between button and quantity */
+      margin: 0 10px;
       line-height: 0.8;
     }
 
@@ -154,23 +136,22 @@
     /* Responsive adjustments for mobile */
     @media only screen and (max-width: 768px) {
       .menu-section {
-        max-width: 90%; /* Make the menu smaller */
-        padding: 10px;  /* Less padding */
-        background-color: rgba(255, 255, 255, 0.7); /* More transparency for smaller screens */
+        max-width: 90%;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.7);
         font-size: 16px;
       }
 
       .menu-section h2 {
-        font-size: 36px; /* Smaller title */
+        font-size: 36px;
       }
 
       .menu-item {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column;
         align-items: flex-start;
       }
 
-      .menu-item-img,
-      .menu-item-details {
+      .menu-item-img, .menu-item-details {
         flex-basis: 100%;
         padding: 0;
       }
@@ -183,6 +164,24 @@
         font-size: 16px;
       }
 
+      .menu-item-details button {
+        background-color: #8a2b06;
+        color: #fff;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        margin-left: 10px;
+        margin-top: 10px;
+        font-family: 'McdStyle', sans-serif;
+        transition: background-color 0.3s ease;
+      }
+
+      .menu-item-details button:hover {
+        background-color: #722506;
+      }
+
       .quantity-controls button {
         font-size: 16px;
         padding: 5px 10px;
@@ -192,6 +191,16 @@
         width: 40px;
         padding: 3px;
       }
+    }
+
+    /* CSS untuk SweetAlert2 Popup */
+    .custom-popup {
+      font-family: McdStyle, sans-serif; /* Gunakan font yang sama dengan menu */
+      text-align: center; /* Rata tengah */
+    }
+
+    .custom-popup strong {
+      color: #8a2b06; /* Warna teks yang kuat */
     }
   </style>
 </head>
@@ -260,30 +269,37 @@
 
   </div>
 
-  <!-- JavaScript to handle quantity and add to cart -->
+  <!-- JavaScript untuk mengelola quantity dan menambah ke keranjang -->
   <script>
     function changeQuantity(id, amount) {
       var quantityInput = document.getElementById(id);
       var currentValue = parseInt(quantityInput.value);
       var newValue = currentValue + amount;
+
+      // Pastikan quantity tidak kurang dari 1
       if (newValue < 1) newValue = 1;
+
       quantityInput.value = newValue;
     }
 
     function addToCart(menuItem, quantity, price) {
         var total = quantity * price;
-        var formattedTotal = total.toLocaleString('id-ID');
+        var formattedTotal = total.toLocaleString('id-ID'); // Format total menjadi format ID
+
+        // Membuat tampilan lebih rapi dengan CSS
         Swal.fire({
-        title: menuItem,
-        html: `
-          <div style="margin-bottom: 10px;font-size: 26px;">Quantity: ${quantity}</div>
-          <div style="margin-top: 10px;font-size: 26px;">Total Price: Rp ${formattedTotal}</div>
-        `,
-        icon: 'success',
-        confirmButtonText: 'OK'
-      });
+            title: `<strong>${menuItem}</strong>`,
+            html: `
+                <div style="margin-bottom: 10px; font-size: 18px;">Quantity: <strong>${quantity}</strong></div>
+                <div style="font-size: 18px;">Total Price: <strong>Rp ${formattedTotal}</strong></div>
+            `,
+            icon: 'success',
+            confirmButtonText: 'OK',
+            customClass: {
+                popup: 'custom-popup', // Tambahkan kelas untuk popup
+            }
+        });
     }
   </script>
-
 </body>
 </html>
