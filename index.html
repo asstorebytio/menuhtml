@@ -37,12 +37,12 @@
       max-width: 1200px;
       margin: 50px auto;
       padding: 20px;
-      background-color: rgba(255, 255, 255, 0.8); /* Transparent background using rgba */
+      background-color: rgba(255, 255, 255, 0.8);
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       position: relative;
       z-index: 1;
-      opacity: 0.9; /* Overall transparency */
+      opacity: 0.9;
     }
 
     /* Menu title */
@@ -94,6 +94,24 @@
       font-size: 18px;
       font-weight: bold;
       color: #8a2b06;
+    }
+
+    .menu-item-details button {
+      background-color: #8a2b06; /* Warna latar belakang */
+      color: #fff; /* Warna teks */
+      padding: 12px 24px; /* Padding */
+      border: none; /* Tidak ada border */
+      border-radius: 5px; /* Sudut melingkar */
+      cursor: pointer; /* Kursor pointer saat hover */
+      font-size: 18px; /* Ukuran font */
+      transition: background-color 0.3s ease; /* Transisi warna latar belakang saat hover */
+      margin-left: 10px; /* Jarak kiri */
+      margin-top: 10px; /* Jarak atas */
+      font-family: 'McdStyle', sans-serif; /* Font fallback */
+    }
+
+    .menu-item-details button:hover {
+      background-color: #722506; /* Warna saat hover */
     }
 
     .menu-item-details .quantity-controls {
@@ -151,7 +169,8 @@
         align-items: flex-start;
       }
 
-      .menu-item-img, .menu-item-details {
+      .menu-item-img,
+      .menu-item-details {
         flex-basis: 100%;
         padding: 0;
       }
@@ -162,24 +181,6 @@
 
       .menu-item-details .price {
         font-size: 16px;
-      }
-
-      .menu-item-details button {
-        background-color: #8a2b06;
-        color: #fff;
-        padding: 12px 24px;  /* Atur padding agar lebih proporsional */
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 18px;  /* Ukuran font lebih besar */
-        margin-left: 10px;
-        margin-top: 10px;
-        font-family: 'McdStyle', sans-serif;  /* Tambahkan fallback font */
-        transition: background-color 0.3s ease;  /* Tambahkan transisi untuk hover */
-      }
-
-      .menu-item-details button:hover {
-        background-color: #722506;
       }
 
       .quantity-controls button {
