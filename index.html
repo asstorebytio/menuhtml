@@ -20,7 +20,6 @@
       color: #333;
     }
 
-    /* Video background */
     #video-background {
       position: fixed;
       top: 0;
@@ -32,7 +31,6 @@
       opacity: 0.9;
     }
 
-    /* Menu Section */
     .menu-section {
       max-width: 1200px;
       margin: 50px auto;
@@ -45,7 +43,6 @@
       opacity: 0.9;
     }
 
-    /* Menu title */
     .menu-section h2 {
       text-align: center;
       font-size: 56px;
@@ -55,7 +52,6 @@
       color: #8a2b06;
     }
 
-    /* Menu item styling */
     .menu-item {
       display: flex;
       justify-content: space-between;
@@ -96,6 +92,24 @@
       color: #8a2b06;
     }
 
+    .menu-item-details button {
+      background-color: #8a2b06;
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+      margin-left: 10px;
+      margin-top: 10px;
+      font-family: 'McdStyle', sans-serif;
+    }
+
+    .menu-item-details button:hover {
+      background-color: #722506;
+    }
+
     .menu-item-details .quantity-controls {
       display: flex;
       align-items: center;
@@ -133,7 +147,6 @@
       -moz-appearance: textfield;
     }
 
-    /* Responsive adjustments for mobile */
     @media only screen and (max-width: 768px) {
       .menu-section {
         max-width: 90%;
@@ -143,7 +156,7 @@
       }
 
       .menu-section h2 {
-        font-size: 36px;
+ font-size: 36px;
       }
 
       .menu-item {
@@ -151,7 +164,8 @@
         align-items: flex-start;
       }
 
-      .menu-item-img, .menu-item-details {
+      .menu-item-img,
+      .menu-item-details {
         flex-basis: 100%;
         padding: 0;
       }
@@ -164,24 +178,6 @@
         font-size: 16px;
       }
 
-      .menu-item-details button {
-        background-color: #8a2b06;
-        color: #fff;
-        padding: 12px 24px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 18px;
-        margin-left: 10px;
-        margin-top: 10px;
-        font-family: 'McdStyle', sans-serif;
-        transition: background-color 0.3s ease;
-      }
-
-      .menu-item-details button:hover {
-        background-color: #722506;
-      }
-
       .quantity-controls button {
         font-size: 16px;
         padding: 5px 10px;
@@ -191,16 +187,6 @@
         width: 40px;
         padding: 3px;
       }
-    }
-
-    /* CSS untuk SweetAlert2 Popup */
-    .custom-popup {
-      font-family: McdStyle, sans-serif; /* Gunakan font yang sama dengan menu */
-      text-align: center; /* Rata tengah */
-    }
-
-    .custom-popup strong {
-      color: #8a2b06; /* Warna teks yang kuat */
     }
   </style>
 </head>
@@ -269,37 +255,30 @@
 
   </div>
 
-  <!-- JavaScript untuk mengelola quantity dan menambah ke keranjang -->
+  <!-- JavaScript to handle quantity and add to cart -->
   <script>
     function changeQuantity(id, amount) {
       var quantityInput = document.getElementById(id);
       var currentValue = parseInt(quantityInput.value);
       var newValue = currentValue + amount;
-
-      // Pastikan quantity tidak kurang dari 1
       if (newValue < 1) newValue = 1;
-
       quantityInput.value = newValue;
     }
 
     function addToCart(menuItem, quantity, price) {
-        var total = quantity * price;
-        var formattedTotal = total.toLocaleString('id-ID'); // Format total menjadi format ID
-
-        // Membuat tampilan lebih rapi dengan CSS
-        Swal.fire({
-            title: `<strong>${menuItem}</strong>`,
-            html: `
-                <div style="margin-bottom: 10px; font-size: 18px;">Quantity: <strong>${quantity}</strong></div>
-                <div style="font-size: 18px;">Total Price: <strong>Rp ${formattedTotal}</strong></div>
-            `,
-            icon: 'success',
-            confirmButtonText: 'OK',
-            customClass: {
-                popup: 'custom-popup', // Tambahkan kelas untuk popup
-            }
-        });
+      var total = quantity * price;
+      var formattedTotal = total .toLocaleString('id-ID');
+      Swal.fire({
+        title: menuItem,
+        html: `
+          <div style="margin-bottom: 10px;font-size: 26px;">Quantity: ${quantity}</div>
+          <div style="margin-top: 10px;font-size: 26px;">Total Price: Rp ${formattedTotal}</div>
+        `,
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
     }
   </script>
+
 </body>
 </html>
