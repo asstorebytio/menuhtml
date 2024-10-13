@@ -139,6 +139,7 @@
         max-width: 90%; /* Make the menu smaller */
         padding: 10px;  /* Less padding */
         background-color: rgba(255, 255, 255, 0.7); /* More transparency for smaller screens */
+        font-size: 16px;
       }
 
       .menu-section h2 {
@@ -164,8 +165,21 @@
       }
 
       .menu-item-details button {
-        font-size: 14px;
-        padding: 8px 16px;
+        background-color: #8a2b06;
+        color: #fff;
+        padding: 12px 24px;  /* Atur padding agar lebih proporsional */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;  /* Ukuran font lebih besar */
+        margin-left: 10px;
+        margin-top: 10px;
+        font-family: 'McdStyle', sans-serif;  /* Tambahkan fallback font */
+        transition: background-color 0.3s ease;  /* Tambahkan transisi untuk hover */
+      }
+
+      .menu-item-details button:hover {
+        background-color: #722506;
       }
 
       .quantity-controls button {
